@@ -1,0 +1,23 @@
+<div class="form-group">
+    <label for="disabledTextInput">AÑO</label>
+    <input [formControl]="anho" type="number"  class="form-control" placeholder="Enter año">
+</div>
+<div class="mb-3">
+    <button class="btn btn-primary" (click)="postPrediction()">PREDECIR</button>
+</div>
+
+<label>Result: <span>{{input.anho}} </span></label> 
+
+<agm-map 
+    [latitude]="lat" 
+    [longitude]="lng"
+    [zoom]="zoom"
+    [disableDefaultUI]="false">
+    <!-- <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng"></agm-marker> -->
+    <agm-circle *ngFor="let p of predictions; let i = index" [latitude]="p.lat" [longitude]="p.lng" 
+        [radius]="5000"
+        [fillColor]="p.TARGET === 'p-' ? 'red': 'green'"
+        [circleDraggable]="true"
+        [editable]="true">
+    </agm-circle>
+</agm-map>
