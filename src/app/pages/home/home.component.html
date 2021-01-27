@@ -13,11 +13,22 @@
     [longitude]="lng"
     [zoom]="zoom"
     [disableDefaultUI]="false">
-    <!-- <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng"></agm-marker> -->
     <agm-circle *ngFor="let p of predictions; let i = index" [latitude]="p.lat" [longitude]="p.lng" 
-        [radius]="5000"
-        [fillColor]="p.TARGET === 'p-' ? 'red': 'green'"
+        [radius]="10000"
+        [fillColor]="p.TARGET === 'P+' ? 'red': 'green'"
         [circleDraggable]="true"
-        [editable]="true">
+        [editable]="true"
+        (mouseOver)="onMouseOver(infoWindow)" 
+        (mouseOut)="onMouseOut(infoWindow)">
+        <!-- (mouseleave)="changeText=false" -->
+        <agm-info-window [latitude]="p.lat" [longitude]="p.lng" [disableAutoPan]="false"  #infoWindow>
+            <div>
+                <span>
+                    <b><Strong>Provincia: </Strong> {{p.provincia}}</b>
+                    <br>
+                    <b><Strong>Fecha: </Strong> {{input.anho}}</b>
+                </span>
+            </div>
+        </agm-info-window>
     </agm-circle>
 </agm-map>

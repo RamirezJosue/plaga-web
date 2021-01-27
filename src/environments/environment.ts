@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  base_url: 'http://localhost:5002/api'
+  base_url: 'https://plagaa-toheroku.herokuapp.com/api'
+  // base_url: 'http://localhost:5002/api'
 };
 
 /*
